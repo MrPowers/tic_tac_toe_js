@@ -4,7 +4,7 @@ function Board () {
 
   this.set = function(index, value) {
     this.grid[index] = value;
-  };
+  }
 
   this.rows = function () {
     var g = this.grid;
@@ -13,7 +13,7 @@ function Board () {
       [g[3], g[4], g[5]],
       [g[6], g[7], g[8]]
     ];
-  };
+  }
 
   this.columns = function () {
     var g = this.grid;
@@ -22,7 +22,7 @@ function Board () {
       [g[1], g[4], g[7]],
       [g[2], g[5], g[8]]
     ];
-  };
+  }
 
   this.diagonals = function () {
     var g = this.grid;
@@ -30,6 +30,22 @@ function Board () {
       [g[0], g[4], g[8]],
       [g[6], g[4], g[2]]
     ];
-  };
+  }
+
+  this.formatted_row = function (arr) {
+    var r = arr.map(function(e) {
+      var v = (e === undefined ? "_" : e)
+      return v
+    });
+    return r.join(" ");
+  }
+
+  this.formatted_board = function () {
+    var rows = this.rows();
+    for (var i = 0, l = rows.length; i < l; i ++) {
+      var v = rows[i];
+      console.log(this.formatted_row(v));
+    }
+  }
 
 };

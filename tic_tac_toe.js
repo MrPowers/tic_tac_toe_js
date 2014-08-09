@@ -65,6 +65,8 @@ function TicTacToe () {
         break
       }
       current_player = this.other_player(current_player);
+      this.board.formatted_board();
+      console.log("***");
     }
   }
 
