@@ -2,6 +2,7 @@
 <head>
   <title>JS Tic Tac Toe</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <script src="board.js"></script>
   <script src="player.js"></script>
   <script src="array.js"></script>
@@ -14,27 +15,66 @@
       height:100px;
       display: inline-block;
       border: black 3px solid;
+      text-align: center;
+    }
+
+    .container {
+      margin: auto;
+    }
+
+    p {
+      font-size: 20px;
     }
   </style>
 </head>
 <body>
-  <h2>Tic Tac Toe!</h2>
-  <div class='notification'></div>
-  <div class='new_game'></div>
-  <div>
-    <div id=cell_0 class='cell'></div>
-    <div id=cell_1 class='cell'></div>
-    <div id=cell_2 class='cell'></div>
-  </div>
-  <div>
-    <div id=cell_3 class='cell'></div>
-    <div id=cell_4 class='cell'></div>
-    <div id=cell_5 class='cell'></div>
-  </div>
-  <div>
-    <div id=cell_6 class='cell'></div>
-    <div id=cell_7 class='cell'></div>
-    <div id=cell_8 class='cell'></div>
-  </div>
+
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <br>
+      <br>
+      <br>
+      <h2>Tic Tac Toe!</h2>
+      <div class='notification'></div>
+      <div class='new_game'></div>
+      <table class="span5">
+        <tr>
+          <td id='cell_0' class='cell'></td>
+          <td id='cell_1' class='cell'></td>
+          <td id='cell_2' class='cell'></td>
+        </tr>
+        <tr>
+          <td id='cell_3' class='cell'></td>
+          <td id='cell_4' class='cell'></td>
+          <td id='cell_5' class='cell'></td>
+        </tr>
+        <tr>
+          <td id='cell_6' class='cell'></td>
+          <td id='cell_7' class='cell'></td>
+          <td id='cell_8' class='cell'></td>
+        </tr>
+      </table>
+    </div>
+
 </body>
 </html>

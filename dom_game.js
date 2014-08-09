@@ -2,33 +2,34 @@ var p = new TicTacToe();
 var current_player = p.random_player;
 
 $(document).ready(function() {
-  $(".notification").html("Player " + current_player.color + " was randomly selected to go first.");
+  $(".notification").html("<p>Player " + current_player.color + " was randomly selected to go first.</p>");
 
   $(".cell").click(function() {
-    $(this).html(current_player.color);
+    $(this).html("<p>" + current_player.color + "</p>");
 
     var index = $(this).attr("id").split("_").pop();
     p.board.set(index, current_player.color);
     if (p.winner() == "X") {
-      $(".notification").html("Player X is the winner");
+      $(".notification").html("<p>Player X is the winner</p>");
       finish_game();
     }
     else if (p.winner() == "O") {
-      $(".notification").html("Player O is the winner");
+      $(".notification").html("<p>Player O is the winner</p>");
       finish_game();
     }
     else if (p.tie()) {
-      $(".notification").html("The game ended in a tie");
+      $(".notification").html("<p>The game ended in a tie</p>");
       finish_game();
     }
     current_player = p.other_player(current_player);
+    $(this).off("click");
   });
 
 });
 
 function finish_game() {
   $(".cell").off("click");
-  $(".new_game").html("Click here to start a new game");
+  $(".new_game").html('<button type="button" class="btn btn-default btn-primary">Click here to start a new game</button>');
   $(".new_game").click(function() {
     location.reload();
   })
