@@ -1,4 +1,4 @@
-function Play () {
+function TicTacToe () {
   this.player_x = new Player("X");
 
   this.player_o = new Player("O");
@@ -25,8 +25,9 @@ function Play () {
   }
 
   this.tie = function () {
-    var arr = this.board;
+    var arr = this.board.grid;
     for (var i = 0, l = arr.length; i < l; i ++) {
+      var v = arr[i];
       if (v === undefined) { return false };
     }
     return true;

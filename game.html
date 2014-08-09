@@ -1,12 +1,40 @@
 <html>
 <head>
   <title>JS Tic Tac Toe</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="board.js"></script>
   <script src="player.js"></script>
   <script src="array.js"></script>
-  <script src="play.js"></script>
+  <script src="tic_tac_toe.js"></script>
+  <script src="dom_game.js"></script>
+
+  <style type="text/css">
+    .cell {
+      width:100px;
+      height:100px;
+      display: inline-block;
+      border: black 3px solid;
+    }
+  </style>
 </head>
 <body>
-
+  <h2>Tic Tac Toe!</h2>
+  <div class='notification'></div>
+  <div class='new_game'></div>
+  <div>
+    <div id=cell_0 class='cell'></div>
+    <div id=cell_1 class='cell'></div>
+    <div id=cell_2 class='cell'></div>
+  </div>
+  <div>
+    <div id=cell_3 class='cell'></div>
+    <div id=cell_4 class='cell'></div>
+    <div id=cell_5 class='cell'></div>
+  </div>
+  <div>
+    <div id=cell_6 class='cell'></div>
+    <div id=cell_7 class='cell'></div>
+    <div id=cell_8 class='cell'></div>
+  </div>
 </body>
 </html>
