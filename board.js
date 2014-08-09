@@ -44,21 +44,4 @@ function Board () {
     return r;
   }
 
-  // helper methods to print a pretty board in the console
-  this.formatted_row = function (arr) {
-    var r = arr.map(function(e) {
-      var v = (e === undefined ? "_" : e)
-      return v
-    });
-    return r.join(" ");
-  }
-
-  this.formatted_board = function () {
-    var rows = this.rows();
-    for (var i = 0, l = rows.length; i < l; i ++) {
-      var v = rows[i];
-      console.log(this.formatted_row(v));
-    }
-  }
-
 };
