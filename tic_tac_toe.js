@@ -1,11 +1,11 @@
-function TicTacToe () {
-  this.player_x = new Player("X");
+function TicTacToe (board, player_x, player_o) {
+  this.player_x = player_x;
 
-  this.player_o = new Player("O");
+  this.player_o = player_o;
 
   this.players = [this.player_x, this.player_o];
 
-  this.board = new Board();
+  this.board = board;
 
   this.winning_positions = function () {
     var b = this.board;
@@ -43,7 +43,7 @@ function TicTacToe () {
     }
   }
 
-  this.random_player = this.players[Math.floor(Math.random() * this.players.length)];
+  this.random_player = this.players.sample();
 
   this.console_game = function () {
     console.log("Let's play tic-tac-toe!");

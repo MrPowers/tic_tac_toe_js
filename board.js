@@ -32,6 +32,19 @@ function Board () {
     ];
   }
 
+  this.open_spaces = function () {
+    var r = [];
+    var arr = this.grid;
+    for (var i = 0, l = arr.length; i < l; i ++) {
+      var v = arr[i];
+      if (v === undefined) {
+        r.push(i);
+      }
+    }
+    return r;
+  }
+
+  // helper methods to print a pretty board in the console
   this.formatted_row = function (arr) {
     var r = arr.map(function(e) {
       var v = (e === undefined ? "_" : e)

@@ -22,3 +22,8 @@ Array.prototype.equals = function (array) {
     }
     return true;
 }
+
+
+Array.prototype.sample = function () {
+  return this[Math.floor(Math.random() * this.length)];
+}
