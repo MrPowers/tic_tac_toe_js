@@ -33,6 +33,10 @@ function TicTacToe (board, player_x, player_o) {
     return true;
   }
 
+  this.game_over = function () {
+    return !!(this.winner() || this.tie())
+  }
+
   this.other_player = function (current_player) {
     var arr = this.players;
     for (var i = 0, l = arr.length; i < l; i ++) {

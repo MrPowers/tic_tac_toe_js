@@ -1,32 +1,53 @@
-
 // Game for human and a bot
-//$(document).ready(function() {
-  //$(".notification").html("<p>Player " + current_player.color + " was randomly selected to go first.</p>");
-//});
-
-function finish_game() {
-  $(".cell").off("click");
-  $(".new_game").html('<button type="button" class="btn btn-default btn-primary">Click here to start a new game</button>');
-  $(".new_game").click(function() {
-    location.reload();
-  })
-}
-
-//Game for 2 humans
-var board = new Board();
-var player_x = new Player("X");
-var player_o = new Player("O");
-var ttt = new TicTacToe(board, player_x, player_o);
-var current_player = ttt.random_player;
-
+// "you" is the human and "I" am the bot
 $(document).ready(function() {
-  $(".notification").html("<p>Player " + current_player.color + " was randomly selected to go first.</p>");
+  var board = new Board();
+  var human = new Player({"color": "X", "isBot": false, "pronoun": "you"});
+  var bot = new Player({"color": "O", "isBot": true, "pronoun": "I"});
+  var ttt = new TicTacToe(board, human, bot);
+  var ai = new AI(ttt, bot, human);
+  var current_player;
+
+  $(".game-grid").hide();
+
+  $("#human-first").click(function() {
+    current_player = human;
+    after_first_player_select();
+  });
+
+  $("#bot-first").click(function() {
+    current_player = bot;
+    after_first_player_select();
+    bot_move();
+  });
+
+  function after_first_player_select() {
+    $(".notification").text("Ok, " + current_player.pronoun + " will go first.  You will be " + human.color + " and I will be " + bot.color + ".");
+    $("#first-player").hide();
+    $(".game-grid").fadeIn(1000);
+  }
 
   $(".cell").click(function() {
     $(this).html("<p>" + current_player.color + "</p>");
 
     var index = $(this).attr("id").split("_").pop();
     ttt.board.set(index, current_player.color);
+    after_move();
+    $(this).off("click");
+    if (!ttt.game_over()) {
+      bot_move();
+    }
+  });
+
+  function bot_move() {
+    var index = ai.better_move();
+    board.set(index, current_player.color);
+    var id = "#cell_" + index;
+    $(id).html("<p>" + current_player.color + "</p>");
+    after_move();
+  }
+
+  function after_move() {
     if (ttt.winner() == "X") {
       $(".notification").html("<p>Player X is the winner</p>");
       finish_game();
@@ -40,7 +61,14 @@ $(document).ready(function() {
       finish_game();
     }
     current_player = ttt.other_player(current_player);
-    $(this).off("click");
-  });
+  }
+
+  function finish_game() {
+    $(".cell").off("click");
+    $(".new_game").html('<button type="button" class="btn btn-default btn-primary">Click here to start a new game</button>');
+    $(".new_game").click(function() {
+      location.reload();
+    })
+  }
 
 });
